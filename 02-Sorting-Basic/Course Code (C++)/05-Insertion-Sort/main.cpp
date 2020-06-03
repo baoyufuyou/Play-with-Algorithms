@@ -12,10 +12,11 @@ void insertionSort(T arr[], int n){
 
         // 寻找元素arr[i]合适的插入位置
         // 写法1
+        //比较当前位置的元素是不是比前面的小，如果小，就把元素往前放。
 //        for( int j = i ; j > 0 ; j-- )
 //            if( arr[j] < arr[j-1] )
 //                swap( arr[j] , arr[j-1] );
-//            else
+//            else \\ 如果目前的元素比左边的大，直接结束目前循环，查找再左边的元素。
 //                break;
 
         // 写法2

@@ -5,6 +5,11 @@
 
 using namespace std;
 
+//一次交换swap是三次赋值
+// 原始插入操作用swap慢
+// 目前用赋值代替大量使用swap
+
+
 template<typename T>
 void insertionSort(T arr[], int n){
 
@@ -23,10 +28,10 @@ void insertionSort(T arr[], int n){
 //            swap( arr[j] , arr[j-1] );
 
         // 写法3
-        T e = arr[i];
+        T e = arr[i];  // 先复制关注的元素
         int j; // j保存元素e应该插入的位置
-        for (j = i; j > 0 && arr[j-1] > e; j--)
-            arr[j] = arr[j-1];
+        for (j = i; j > 0 && arr[j-1] > e; j--) // 关注的元素和前面的元素进行比较，如果元素小于前面的数，则把前面的数放在目前的位置（赋值）。之前的元素e会往前放置
+            arr[j] = arr[j-1];  // 赋值代替swap
         arr[j] = e;
     }
 
@@ -39,6 +44,7 @@ int main() {
     
     // 测试1 一般测试
     cout<<"Test for random array, size = "<<n<<", random range [0, "<<n<<"]"<<endl;
+    // int *arr1 = SortTestHelper::generateRandomArray(n,0,3); // 如果数组近乎有序，插入排序会比选择排序快很多
     int *arr1 = SortTestHelper::generateRandomArray(n,0,n);
     int *arr2 = SortTestHelper::copyIntArray(arr1, n);
 
@@ -68,7 +74,7 @@ int main() {
     // 测试3 测试近乎有序的数组
     int swapTimes = 100;
     cout<<"Test for nearly ordered array, size = "<<n<<", swap time = "<<swapTimes<<endl;
-    arr1 = SortTestHelper::generateNearlyOrderedArray(n,swapTimes);
+    arr1 = SortTestHelper::generateNearlyOrderedArray(n,swapTimes); // 近乎排序的数组，用插入排序快，因为，可以提前结束。
     arr2 = SortTestHelper::copyIntArray(arr1, n);
 
     SortTestHelper::testSort("Insertion Sort", insertionSort,arr1,n);

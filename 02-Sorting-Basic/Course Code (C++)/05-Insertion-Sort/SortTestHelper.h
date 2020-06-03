@@ -30,9 +30,9 @@ namespace SortTestHelper {
     // 拷贝整型数组a中的所有元素到一个新的数组, 并返回新的数组
     int *copyIntArray(int a[], int n){
 
-        int *arr = new int[n];
+        int *arr = new int[n]; // 新建一个n的数组
         //* 在VS中, copy函数被认为是不安全的, 请大家手动写一遍for循环:)
-        copy(a, a+n, arr);
+        copy(a, a+n, arr); // std::copy
         return arr;
     }
 

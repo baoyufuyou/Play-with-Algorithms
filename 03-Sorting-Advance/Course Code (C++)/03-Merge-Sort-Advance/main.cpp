@@ -11,14 +11,17 @@ template<typename T>
 void __mergeSort2(T arr[], int l, int r){
 
     // 优化2: 对于小规模数组, 使用插入排序
+    //当只剩下小规模数组，插入排序快
     if( r - l <= 15 ){
-        insertionSort(arr, l, r);
+        insertionSort(arr, l, r); // 从l到R
         return;
     }
 
     int mid = (l+r)/2;
     __mergeSort2(arr, l, mid);
     __mergeSort2(arr, mid+1, r);
+
+    // 对于近乎有序的数组进行优化
 
     // 优化1: 对于arr[mid] <= arr[mid+1]的情况,不进行merge
     // 对于近乎有序的数组非常有效,但是对于一般情况,有一定的性能损失
@@ -73,3 +76,13 @@ int main() {
 
     return 0;
 }
+
+// Test for random array, size = 50000, random range [0, 50000]
+// Insertion Sort : 1.2603 s
+// Merge Sort : 0.007268 s
+// Merge Sort 2 : 0.005848 s
+
+// Test for nearly ordered array, size = 50000, swap time = 10
+// Insertion Sort : 0.000938 s
+// Merge Sort : 0.004321 s
+// Merge Sort 2 : 0.001304 s

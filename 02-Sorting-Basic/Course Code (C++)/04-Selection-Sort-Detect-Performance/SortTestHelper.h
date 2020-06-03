@@ -67,7 +67,8 @@ namespace SortTestHelper {
     // baoyufuyou
     // sortname 排序方式
     // 传入一个函数指针 void(*sort) 输入T[] 
-
+    // ????????? 不理解T[]这里？？？？
+    //
     template<typename T>
     void testSort(const string &sortName, void (*sort)(T[], int), T arr[], int n) {
 
