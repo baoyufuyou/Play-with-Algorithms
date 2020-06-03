@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// mo模板函数 or 泛型   T： 最简单的名字
 template<typename T>
 void selectionSort(T arr[], int n){
 

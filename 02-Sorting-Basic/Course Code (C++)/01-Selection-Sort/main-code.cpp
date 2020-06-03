@@ -19,5 +19,9 @@ void selectionSort(int arr[], int n){
 }
 
 // int main(){
-//     int a[10] = {}
+//     int a[7] = {10，9，8，7，6，5，4，3}；
+//     selectionSort(a, 7);
+//     for(int i=0, i<7, i++){
+//         cout << a[i] << cend；
+//     }
 // }

@@ -10,7 +10,7 @@
 
 using namespace std;
 
-
+// 定义成结构体 或者 类
 struct Student{
 
     string name;
@@ -20,8 +20,10 @@ struct Student{
     // 如果分数相等，则按照名字的字母序排序
     // 如果分数不等，则分数高的靠前
     bool operator<(const Student& otherStudent){
+        // return score > otherStudent.score
         return score != otherStudent.score ?
                score > otherStudent.score : name < otherStudent.name;
+               // if score != score --> with score > score; otherwise, with name < otherstudent.name
     }
 
     // 重载<<符号, 定义Student实例的打印输出方式
